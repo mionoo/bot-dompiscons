@@ -35,7 +35,7 @@ Setiap dokumen webhook juga menyimpan IP pengirim, waktu diterima, `event_type` 
 - `/akun` — tampilkan data akun yang telah dihubungkan.
 - `/cancel` — batalkan proses aktif.
 - `/cekconfirm` — khusus superadmin, tampilkan daftar akun berstatus `needConfirm`. Alias: `/cekacc`.
-- `/acc_nik_telegramId` — khusus superadmin, ubah akun `needConfirm` menjadi `active`; contoh: `/acc_19930270_68619032`.
+- `/acc_nik_telegramId` — khusus superadmin, ubah akun `needConfirm` menjadi `active`; contoh: `/acc_19930111_68619111`.
 
 Semua command dan tombol pengelolaan akun hanya dapat digunakan melalui chat pribadi dengan bot, bukan dalam grup, supergrup, atau channel.
 
