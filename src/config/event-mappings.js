@@ -18,6 +18,21 @@ export const EVENT_MAPPINGS = {
     status: 'active',
     description: 'Eviden ditolak; kirim catatan review kepada penerima.',
   },
+  stage_review_requested: {
+    internalType: 'STAGE_REVIEW_REQUESTED',
+    status: 'active',
+    description: 'Permintaan review tahap project kepada penerima.',
+  },
+  sdi_verification_requested: {
+    internalType: 'SDI_VERIFICATION_REQUESTED',
+    status: 'active',
+    description: 'Permintaan verifikasi Golive kepada semua user aktif ber-role sdi.',
+  },
+  project_golive: {
+    internalType: 'PROJECT_GOLIVE',
+    status: 'active',
+    description: 'Project berhasil Golive; kirim notifikasi kepada penerima.',
+  },
 };
 
 export function getEventMapping(eventType) {

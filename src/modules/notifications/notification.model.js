@@ -8,7 +8,7 @@ const notificationSchema = new mongoose.Schema({
   projectCode: { type: String, index: true },
   recipientInput: mongoose.Schema.Types.Mixed,
   resolvedUserId: { type: mongoose.Schema.Types.ObjectId, index: true },
-  resolvedBy: { type: String, enum: ['nik', 'username', 'name', 'none'] },
+  resolvedBy: { type: String, enum: ['nik', 'username', 'name', 'role', 'none'] },
   chatId: { type: String, index: true },
   message: String,
   status: {

@@ -10,6 +10,12 @@ Semua payload JSON webhook disimpan utuh ke koleksi MongoDB `incoming_webhooks`.
 
 `evidence_rejected` memiliki mapping **aktif** untuk notifikasi penolakan eviden. Judul menggunakan `title` dari event webhook; jika kosong, gunakan “Eviden PT2 Ditolak” ketika `payload.is_pt2 === true`, atau “Eviden Ditolak”. Pesan memuat project, tahap, label eviden (atau tipe jika label tidak tersedia), catatan review, dan LOP jika tersedia. Penerima mengikuti pencarian NIK, username, lalu nama. Mapping ini berlaku untuk webhook baru dan tidak memproses ulang arsip secara otomatis.
 
+`stage_review_requested` dan `project_golive` memiliki mapping **aktif** untuk permintaan review tahap dan pemberitahuan Golive kepada user tertentu. Penerima dicari berdasarkan NIK, username, lalu nama.
+
+`sdi_verification_requested` memiliki mapping **aktif** untuk permintaan verifikasi Golive kepada **semua user aktif ber-role `sdi`** yang memiliki Telegram terhubung, tanpa pembatasan branch. Event harus memiliki `recipient_type: "role"` dan `recipient_role: "sdi"`. Jika satu pengiriman gagal, penerima lain tetap dicoba; webhook ditandai `failed` jika ada kegagalan dan setiap hasil kirim dicatat di `notifications`. Jika tidak ada penerima yang memenuhi syarat, dicatat sebagai `recipientNotFound` di `notifications`.
+
+Ketiga mapping baru menggunakan `title` dan `message` dari webhook, dengan judul dan pesan cadangan jika kosong. Pesan juga memuat PID, project, LOP jika tersedia, dan tahap dari `stage_label` atau `stage_code`. Arsip webhook lama tidak diproses ulang secara otomatis.
+
 Pengiriman Telegram mengulang maksimal tiga kali untuk gangguan koneksi sementara, dengan jeda 2, 5, lalu 10 detik. Respons flood-control Telegram mengikuti waktu tunggu yang diberikan Telegram. Error permanen tetap langsung dicatat sebagai gagal.
 
 ## Persiapan
